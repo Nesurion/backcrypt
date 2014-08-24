@@ -3,14 +3,14 @@ backcrypt
 
 Small backup- and encryption-script, developed in ruby.
 
-Coming Features:
+Coming Features
 
-Backup:
+Backup
   - files/folder
   - database dump
   - automatic dropbox/s3/google drive upload
 
-Compression:
+Compression
   - .rar
   - .zip
   - .tar.gz
