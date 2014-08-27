@@ -1,9 +1,14 @@
-require 'json'
+require 'rubygems'
+require 'zip'
 
-config = JSON.parse(File.read ' config.json')
+# Path to directory which should be backup 
+directory = '/<path>/<to>/<folder>'
 
-options = { :name 			=> config["name"],
-			:path 			=> config["path"],
-			:compression	=>["compression"] 
-}
+# Destination path
+zipfile_name = '/<path>/<to>//backup.zip'
 
+Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
+    Dir[File.join(directory, '**', '**')].each do |file|
+      zipfile.add(file.sub(directory, ''), file)
+    end
+end
