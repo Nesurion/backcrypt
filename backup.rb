@@ -7,6 +7,7 @@ config = JSON.parse(File.read 'config.json')
 
 options = { :directory => config["directory"], 
             :zipfile_name => config["zipfile_name"] }
+# Execute flags for compression level
 opts = Trollop::options do
         opt:no, "NO_COMPRESSION"
         opt:best, "BEST_COMPRESSION"
@@ -20,6 +21,7 @@ opts = Trollop::options do
         elsif opts[:default] == true
             x="DEFAULT_COMPRESSION"
     end 
+
 #Archive configuration
 
 Zip.setup do |c|
