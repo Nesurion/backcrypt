@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'rubyzip'
+require 'zip'
 require 'json'
 require 'trollop'
       
@@ -14,14 +14,6 @@ opts = Trollop::options do
         opt:default, "DEFAULT_COMPRESSION"
     end
   
-  if opts[:no] == true
-        x="NO_COMPRESSION"
-        elsif opts[:best] == true
-            x="BEST_COMPRESSION"
-        elsif opts[:default] == true
-            x="DEFAULT_COMPRESSION"
-    end 
-
 #Archive configuration
 
 Zip.setup do |c|
@@ -32,8 +24,14 @@ Zip.setup do |c|
     # Abbility to store archives with non-english names
     c.unicode_names = true
     # Compression level: Best => possible options: DEFAULT, BEST, NO        
-    c.default_compression = Zlib::x
+  if opts[:no] == true
+        c.default_compression = Zlib::NO_COMPRESSION
+        elsif opts[:best] == true
+            c.default_compression = Zlib::BEST_COMPRESSION
+        elsif opts[:default] == true
+            c.default_compression = Zlib::DEFAULT_COMPRESSION
   end
+end
 
 Zip::File.open(config["zipfile_name"], Zip::File::CREATE) do |zipfile|
     Dir[File.join(config["directory"], '**', '**')].each do |file|
