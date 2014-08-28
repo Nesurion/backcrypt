@@ -5,8 +5,9 @@ require 'trollop'
       
 config = JSON.parse(File.read 'config.json')
 
-options = { :directory => config["directory"], 
-            :zipfile_name => config["zipfile_name"] }
+#options isnt used, is it?
+#options = { :directory => config["directory"], 
+#            :zipfile_name => config["zipfile_name"] }
 # Execute flags for compression level
 opts = Trollop::options do
         opt:no, "NO_COMPRESSION"
