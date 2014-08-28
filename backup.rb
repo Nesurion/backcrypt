@@ -29,7 +29,7 @@ Zip.setup do |c|
     c.continue_on_exists_proc = true
     # Abbility to store archives with non-english names
     c.unicode_names = true
-    # Compression level: Best possible options: DEFAULT, BEST, NO        
+    # Compression level: Best => possible options: DEFAULT, BEST, NO        
     c.default_compression = Zlib::x
   end
 
