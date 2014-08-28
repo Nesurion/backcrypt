@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'zip'
+require 'rubyzip'
 require 'json'
 require 'trollop'
       
