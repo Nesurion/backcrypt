@@ -1,11 +1,19 @@
 require 'rubygems'
 require 'zip'
+require 'yaml'
 
+def read_config
+    config = YAML.load_file("config.yaml")
+    @directory = config["config"]["directory"]
+    @zip_path = config["config"]["zip_path"]
+end   
+
+read_config           
 # Path to directory which should be backup 
-directory = '/Users/kai/Desktop/test/'
+#directory = '/Users/kai/Desktop/test/'
 
 # Destination path
-zipfile_name = '/Users/kai/Desktop/archive.zip'
+#zipfile_name = '/Users/kai/Desktop/archive.zip'
 
 # Archive configuration
 Zip.setup do |c|
@@ -19,8 +27,8 @@ Zip.setup do |c|
     c.default_compression = Zlib::BEST_COMPRESSION
   end
 
-Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
-    Dir[File.join(directory, '**', '**')].each do |file|
-      zipfile.add(file.sub(directory, ''), file)
+Zip::File.open(@zip_path, Zip::File::CREATE) do |zipfile|
+    Dir[File.join(@directory, '**', '**')].each do |file|
+      zipfile.add(file.sub(@directory, ''), file)
     end
 end
