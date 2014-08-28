@@ -1,0 +1,3 @@
+config:
+	directory: /home/kai/Desktop/test
+	zip_path: /home/kai/Desktop/archive.zip
