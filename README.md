@@ -6,7 +6,7 @@ Small backup- and encryption-script, developed in ruby.
 Configuration
 --------------
 Directory path, and zipfile_name configuration in config.json
-e.g.: \t
+e.g.:
 {
 "directory" : "/Users/<username>/Desktop/test/",
 "zipfile_name" : "/Users/<username>/Desktop/archive.zip"
